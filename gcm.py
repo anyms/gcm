@@ -11,12 +11,17 @@ class GCM:
         self.args = parser.parse_args()
 
     def run(self):
+        branch = os.popen("git branch").read().replace("*", "").strip()
         if self.args.cmd == "branch":
             pass
         else:
-            os.popen("git add .")
-            os.popen("git commit -m '{}'".format(self.args.cmd))
-            os.popen("git push")
+            print("* adding files...")
+            os.system("git add .")
+            print("* commiting files...")
+            os.system('git commit -m "{}"'.format(self.args.cmd.replace('"', '\\"')))
+            print("* pushing files...")
+            os.system("git push origin {}".format(branch))
+            print("* done")
 
 
 if __name__ == "__main__":
