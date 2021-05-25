@@ -15,13 +15,13 @@ class GCM:
         if self.args.cmd == "branch":
             pass
         else:
-            print("* adding files...")
+            print("adding files...")
             os.system("git add .")
-            print("* commiting files...")
+            print("commiting files...")
             os.system('git commit -m "{}"'.format(self.args.cmd.replace('"', '\\"')))
-            print("* pushing files...")
+            print("pushing files...")
             os.system("git push origin {}".format(branch))
-            print("* done")
+            print("done.")
 
 
 if __name__ == "__main__":
